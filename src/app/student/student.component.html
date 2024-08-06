@@ -1,0 +1,55 @@
+<div class="studentCreationSec" [nbSpinner]="loading" nbSpinnerStatus="basic">
+<div class="row mt-4 m-0">
+    <div class="col-lg-10 col-md-12 col-sm-12">
+      <h1 class="text-black"><strong>Admission</strong></h1>
+    </div>
+    <div class="col-lg-2 col-md-12 col-sm-12 d-flex justify-content-center text-end">
+      <button fullWidth shape="semi-round" (click)="NavigateToForm()" class="btn text-white status-primary shadow-sm" nbButton>ADD NEW STUDENT +</button>
+    </div>
+    </div>
+</div>
+
+  <div *ngIf="load" >
+  <div *ngIf="showstudent.length > 0">
+  <nb-card class=" studentListCard" >
+    <nb-card-body>
+      <div class="table-responsive">
+        <table datatable>
+          <thead>
+          <tr>
+            <th>Sl.No</th>
+            <th>Name</th>
+            <th>Admission Number</th>
+            <th>Group</th>
+            <th>Medium</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ex of showstudent let i=index">
+            <td>{{i+1}}</td>
+            <td>{{ex.Name}}</td>
+            <td>{{ex.admissionNumber}}</td>
+            <td>{{ex.Group}}</td>
+            <td>{{ex.Medium}}</td>
+            <td>{{ex.Status}}</td>
+            <td><nb-icon icon="edit" routerLink="/dashboard/studentform" [queryParams]="{id:ex.id}" ></nb-icon></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+  <div *ngIf="showstudent.length <= 0">
+    <nb-card class="studentListCard">
+      <nb-card-body>
+        <p>No Student Data Found</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+

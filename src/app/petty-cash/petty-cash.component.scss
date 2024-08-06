@@ -1,0 +1,52 @@
+h1{
+  font-size: 46px;
+  margin-left: -1rem;
+}
+nb-card{
+  background-color:#f2f3f5;
+  border-radius: 12px;
+  margin:0rem 1rem 0rem 0rem;
+}
+input[type=text],input[type=file]{
+  background-color: #d5d7db;
+}
+input[type=date]{
+  background-color: #d5d7db;
+}
+input[type=number]{
+  background-color: #d5d7db;
+}
+input[type=" "]{
+  background-color: #d5d7db;
+}
+input[type=file]::-webkit-file-upload-button{
+  visibility: hidden;
+  display:none;
+}
+::ng-deep input[type=search]{
+  width:250px;
+  margin-bottom: 2rem;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.studentCreationSec {
+  border-radius: 12px;
+}
+.dialogBox{
+  width: 24rem;
+  height: 11rem;
+}
+.ImageSize {
+  width: 60rem;
+  height: 40rem;
+}
+.icon1{
+  font-size: 30px;
+}
+

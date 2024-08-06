@@ -1,0 +1,125 @@
+<div class="dash p-3"><h1><b>Dashboard</b></h1></div>
+<div class="studentCreationSec" [nbSpinner]="loading" nbSpinnerStatus="basic" >
+    <div class="row m-auto">
+      <div class="col-sm-12 col-md-12 col-lg-5 mb-2 " *ngIf="dashboardStudentChartData && dashboardStudentChartData.length > 0">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="m-0 fw-bold">Students</h5>
+          </div>
+          <div class="card-body">
+            <app-doughnut-chart
+              [chartData]="dashboardStudentChartData"
+              [chartId]="'Students'"
+              [loadGraph]="true"
+              [chartImage]="'assets/student.png'"
+              [title]="'Students'"
+              [chartStyle]="{width: '90%', height: '400px', 'max-height': '400px'}"
+              [chartOptions]="getStudentChartOptions()"
+            ></app-doughnut-chart>
+            <div class="row">
+              <div class="col-6">
+                <div class="card activeCard">
+                  <div class="card-body">
+                    Active Students
+                    <div>{{activeStudent.value}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card inactiveCard">
+                  <div class="card-body">
+                    InActive Students
+                    <div>{{inactiveStudent.value}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-7 mb-2 " *ngIf=" dashboardAmountChartData && dashboardAmountChartData.length > 0">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="m-0 fw-bold">Amount</h5>
+          </div>
+          <div class="card-body chartDiv">
+            <app-doughnut-chart
+              [chartData]="dashboardAmountChartData"
+              [chartId]="'student'"
+              [loadGraph]="true"
+              [chartImage]="'assets/student.png'"
+              [title]="'Amount'"
+              [chartStyle]="{width: '90%', height: '400px', 'max-height': '400px'}"
+              [chartOptions]="getAmountChartOptions()"
+            ></app-doughnut-chart>
+            <div class="row">
+              <div class="col-3">
+                <div class="card total-card">
+                  <div class="card-body">
+                    Total Amount
+                    <div>{{total.value}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card conservCard">
+                  <div class="card-body">
+                    conservation
+                    <div>{{conservation.value}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card expendCard">
+                  <div class="card-body">
+                    Expenditure
+                    <div>{{Expenditure.value}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="card pettyCard">
+                  <div class="card-body">
+                    Petty Cash
+                    <div>{{pettyCash.value}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div *ngIf="load">
+  <nb-card>
+    <nb-card-body>
+      <div class="table-responsive">
+        <table datatable>
+          <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>AdmissionNumber</th>
+            <th>Group</th>
+            <th>Medium</th>
+            <th>status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let a of viewDashboardData.students let i=index">
+            <td>{{i+1}}</td>
+            <td>{{a.Name}}</td>
+            <td>{{a.admissionNumber}}</td>
+            <td>{{a.Group}}</td>
+            <td>{{a.Medium}}</td>
+            <td>{{a.Status}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+</div>
+

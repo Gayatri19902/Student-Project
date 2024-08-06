@@ -1,0 +1,95 @@
+<!--Start Verify Email-->
+<nb-layout>
+  <nb-layout-column>
+<div>
+  <div class="container" *ngIf="!vEmail">
+    <div class="row d-flex justify-content-center">
+      <div>
+        <form [formGroup]="verifyEmailForm">
+          <div class="col-lg-4 col-md-8 col-sm-12">
+            <h1><strong>Enter Your Email</strong></h1>
+            <p class="text-black">We have send you a 6 digit code.Enter it below to verify your email.</p>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <input type="email" nbInput fullWidth shape="semi-round" placeholder="Email Id" formControlName="emailverify"
+                   [ngClass]="{'is-invalid': submitted && vef.emailverify.errors}"/>
+            <div *ngIf="submitted && vef.emailverify.invalid" class="invalid-feedback">
+              <div *ngIf="vef.emailverify.errors.required">Email is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <button nbButton fullWidth shape="round" status="primary" (click)="verifyEmail()" >Verify</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Verify Email-->
+<!-- Start Verify Otp-->
+<div>
+  <div class="container" *ngIf="vOtp">
+    <div class="row d-flex justify-content-center">
+      <div>
+        <form [formGroup]="verifyOtpForm">
+          <div class="col-lg-4 col-md-8 col-sm-12">
+            <h2><strong>Verify Your Email Otp</strong></h2>
+            <p class="text-black">Enter it below to verify your Email Otp</p>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <input type="number" nbInput fullWidth shape="semi-round" placeholder="Otp" formControlName="otpVerify"
+                   [ngClass]="{'is-invalid': submit && vof.otpVerify.errors}"/>
+            <div *ngIf="submit && vof.otpVerify.invalid" class="invalid-feedback">
+              <div *ngIf="vof.otpVerify.errors.required">Otp is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <button nbButton fullWidth shape="round" status="primary" (click)="verifyOtp()" >Verify</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Verify Otp-->
+<!-- Start New-Password-->
+<div>
+  <div class="container" *ngIf="nPassword">
+    <div class="row d-flex justify-content-center">
+      <div>
+        <form [formGroup]="PasswordForm">
+          <div class="col-lg-4 col-md-8 col-sm-12">
+            <h2><b>New Password</b></h2>
+            <p class="text-black">Please enter New password to continue</p>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <nb-form-field>
+              <input type="{{ showPassword ? 'text' : 'password' }}"  nbInput fullWidth shape="semi-round" placeholder="Enter New Password" formControlName="pass"
+                     [ngClass]="{'is-invalid': submit && npf.pass.errors}"/>
+              <nb-icon class="password-toggle-icon" nbSuffix icon="{{ showPassword ? 'eye-off' : 'eye' }}" (click)="togglePasswordVisibility()"></nb-icon>
+            </nb-form-field>
+            <div *ngIf="submit && npf.pass.invalid" class="invalid-feedback">
+              <div *ngIf="npf.pass.errors.required">Password is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <nb-form-field>
+              <input type="{{ showPassword ? 'text' : 'password' }}"  nbInput fullWidth shape="semi-round" placeholder="Re-Enter New Password" formControlName="newpass"
+                     [ngClass]="{'is-invalid': submit && npf.newpass.errors}"/>
+              <nb-icon class="password-toggle-icon" nbSuffix icon="{{ reEnterPassword ? 'eye-off' : 'eye' }}" (click)="toggleNewPasswordVisibility()"></nb-icon>
+            </nb-form-field>
+            <div *ngIf="submit && npf.newpass.invalid" class="invalid-feedback">
+              <div *ngIf="npf.newpass.errors.required">Password is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-8 col-sm-12 mt-3">
+            <button nbButton fullWidth status="primary" shape="round" (click)="newPassword()" >Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  </nb-layout-column>
+</nb-layout>
+<!--End New-password-->

@@ -1,0 +1,208 @@
+<div class="row pt-4 m-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <h1 class="text-black"><b>Conservation</b></h1>
+  </div>
+</div>
+<div class="studentCreationSec" [nbSpinner]="loading" nbSpinnerStatus="basic" >
+  <nb-card>
+    <nb-card-body>
+      <form [formGroup]="conservationForm">
+        <div class="row m-0">
+          <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+            <label class="mb-2">Name<span class="text-danger"><b>*</b></span></label><br>
+            <input fullWidth type="text" shape="semi-round" placeholder="Enter Name" formControlName="name" nbInput [readonly]="ReadOnly" />
+            <div *ngIf="submitted">
+              <div class="text-danger" *ngIf="conservationForm.controls.name.errors?.required">Name is required
+              </div>
+              <div class="text-danger" *ngIf="conservationForm.controls.name.errors?.pattern">Incorrect data</div>
+              <div class="text-danger" *ngIf="conservationForm.controls.name.errors?.['maxlength']">maximum 10 characters</div>
+            </div>
+            <div class="text-danger"
+                 *ngIf="!submitted && conservationForm.controls.name.touched && conservationForm.controls.name.errors?.required">
+              Name is required</div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+            <label class="mb-2">Subject<span class="text-danger"><b>*</b></span></label><br>
+            <input fullWidth type="text" shape="semi-round" placeholder="Enter Subject" formControlName="subject" nbInput  [readonly]="ReadOnly" />
+            <div *ngIf="submitted">
+              <div class="text-danger" *ngIf="conservationForm.controls.subject.errors?.required">subject is required
+              </div>
+              <div class="text-danger" *ngIf="conservationForm.controls.subject.errors?.pattern">Incorrect data</div>
+              <div class="text-danger" *ngIf="conservationForm.controls.subject.errors?.['maxlength']">maximum 10 characters</div>
+            </div>
+            <div class="text-danger"
+                 *ngIf="!submitted && conservationForm.controls.subject.touched && conservationForm.controls.subject.errors?.required">
+              subject is required</div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+            <label class="mb-2">Description<span class="text-danger"><b>*</b></span></label><br>
+            <input fullWidth type="text" shape="semi-round" placeholder="Enter Description" formControlName="description" nbInput  [readonly]="ReadOnly" />
+            <div *ngIf="submitted">
+              <div class="text-danger" *ngIf="conservationForm.controls.description.errors?.required">description is required
+              </div>
+<!--              <div class="text-danger" *ngIf="conservationForm.controls.description.errors?.pattern">minimum 3 characters</div>-->
+<!--              <div class="text-danger" *ngIf="conservationForm.controls.description.errors?.['maxlength']">maximum 10 characters</div>-->
+            </div>
+            <div class="text-danger"
+                 *ngIf="!submitted && conservationForm.controls.description.touched && conservationForm.controls.description.errors?.required">
+              description is required</div>
+          </div>
+        </div>
+        <div class="row m-0">
+          <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+            <label class="mb-2">Date<span class="text-danger"><b>*</b></span></label><br>
+            <input fullWidth type=" " shape="semi-round" placeholder="Enter Date" formControlName="date" [nbDatepicker]="datepicker1" nbInput readonly />
+            <div *ngIf="submitted">
+              <div class="text-danger" *ngIf="conservationForm.controls.date.errors?.required">date is required
+              </div>
+            </div>
+            <div class="text-danger" *ngIf="!submitted && conservationForm.controls.date.touched && conservationForm.controls.date.errors?.required">
+              date is required</div>
+            <nb-datepicker #datepicker1></nb-datepicker>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+            <label class="mb-2">Amount<span class="text-danger"><b>*</b></span></label><br>
+            <input fullWidth type="number" shape="semi-round" placeholder="Enter Amount" formControlName="amount" nbInput  [readonly]="ReadOnly" />
+            <div *ngIf="submitted">
+              <div class="text-danger" *ngIf="conservationForm.controls.amount.errors?.required">amount is required
+              </div>
+              <div class="text-danger" *ngIf="conservationForm.controls.amount.errors?.maxlength">Please, Enter amount
+              </div>
+              <div class="text-danger" *ngIf="conservationForm.controls.amount.errors?.pattern">Please, Enter
+                amount only</div>
+            </div>
+            <div class="text-danger" *ngIf="!submitted && conservationForm.controls.amount.touched && conservationForm.controls.amount.errors?.required">
+              amount is required</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10">'
+          </div>
+          <div class="col-lg-2 mt-3 text-end">
+            <button nbButton shape="semi-round" (click)="confirm()"  [hidden]="confirmBTN" status="primary">Confirm</button>
+          </div>
+        </div>
+
+        <div *ngIf="loadbill">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <label>Bill<span class="text-danger"><b>*</b></span></label><br>
+              <label for="file-input">
+                <nb-form-field>
+                  <nb-icon nbSuffix icon="upload-outline"pack="eva" class="ico" ></nb-icon>
+                  <input type="file" id="file-input" fullWidth shape="semi-round" placeholder="Upload Bill"
+                         formControlName="bill" #fileInput (change)="onselectFile($event)" nbInput>
+                </nb-form-field>
+              </label>
+              <div *ngIf="delete">
+                <img [src]="url" width="60" >
+                <button (click)="removeFilePreview()">X</button>
+              </div>
+              <div *ngIf="submitted">
+                <div class="text-danger" *ngIf="conservationForm.controls.bill.errors?.required">bill is required
+                </div>
+                <div class="text-danger" *ngIf="!submitted && conservationForm.controls.bill.touched && conservationForm.controls.bill.errors?.required">
+                  file is required</div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 mt-3">
+              <button nbButton fullWidth shape="round" status="primary" (click)="save()" >Save</button>
+            </div>
+          </div>
+        </div>
+        <br>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</div>
+<br><br>
+
+
+<div *ngIf="load">
+  <div *ngIf="showConservation.length > 0">
+    <nb-card>
+      <nb-card-body>
+        <div class="table-responsive">
+          <table datatable id="dataTable" id="exportTable" class="table table-hover table-striped ">
+            <thead>
+            <tr>
+              <th>Sl.No</th>
+              <th>Name</th>
+              <th>Subject</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>File</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let a of showConservation let i=index">
+              <td>{{i+1}}</td>
+              <td (click)="exp(dialog, a)">{{a.Name}}</td>
+              <td>{{a.Subject}}</td>
+              <td>{{a.Date | date:'dd/MM/yyyy'}}</td>
+              <td>{{a.Amount}}</td>
+              <td>
+                <nb-icon icon="eye-outline" id="eyeIcon" nbTooltip="openFile" (click)="showFile(Image,a.id)" ></nb-icon>
+                <nb-icon icon="file-text-outline" nbTooltip="downloadFile" (click)="conservationBill(a.id)"></nb-icon>
+              </td>
+              <td><nb-icon icon="download-outline" nbTooltip="ExportFile" status="primary" (click)=" exportToExcel()"></nb-icon></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div *ngIf="showConservation.length <= 0">
+    <nb-card>
+      <nb-card-body>
+        <p class="text-center">No Expenditure Data Found</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+  <ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card class="dialogBox">
+      <nb-card-header>
+        <div class="row d-flex">
+          <div class="col-sm-11">
+            <h6>Description</h6>
+          </div>
+          <div class="col-sm-1">
+            <nb-icon icon="close" (click)="ref.close()" class="icon1"></nb-icon>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <p>{{data.description}}</p>
+      </nb-card-body>
+    </nb-card>
+  </ng-template>
+
+</div>
+
+<ng-template #Image let-Image let-ref="dialogRef">
+  <nb-card class="ImageSize">
+    <nb-card-header>
+      <div class="row d-flex">
+        <div class="col-sm-11">
+          <h6>Image</h6>
+        </div>
+        <div class="col-sm-1">
+          <nb-icon icon="close" (click)="ref.close()" class="icon1"></nb-icon>
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row d-flex">
+        <div class="col-sm-12">
+          <img [src]="billImageUrl" alt="Bill Image">
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</ng-template>
+

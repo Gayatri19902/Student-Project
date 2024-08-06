@@ -1,0 +1,43 @@
+h1{
+  font-size: 46px;
+  margin-left: -1rem;
+}
+nb-card{
+  background-color:#f2f3f5;
+  border-radius: 12px;
+  margin:0rem 1rem 0rem 0rem;
+}
+.select-button{
+  background-color: #d5d7db;
+}
+input[type=text]{
+  background-color: #d5d7db;
+}
+input[type=date]{
+  background-color: #d5d7db;
+}
+input[type=" "]{
+  background-color: #d5d7db;
+}
+::ng-deep {
+  [dir=ltr] nb-select.appearance-outline.size-medium .select-button {
+    background-color: #d5d7db;
+    color: black;
+  }
+}
+::ng-deep {
+  .dataTables_wrapper .dataTables_filter {
+    float: right;
+  }
+}
+::ng-deep input[type=search]{
+  width:250px;
+  margin-bottom: 2rem;
+  outline-offset:0px;
+}
+::ng-deep .dataTables_wrapper .dataTables_filter input[type=search]{
+  border-radius: 15px;
+}
+.studentCreationSec{
+  border-radius: 12px;
+}

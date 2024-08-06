@@ -1,0 +1,98 @@
+h1{
+  font-size: 45px;
+  margin-left: -1rem;
+}
+nb-card{
+  background-color:#f2f3f5;
+  border-radius: 12px;
+  margin:0 1rem 0 0;
+}
+.icon1{
+  font-size: 30px;
+}
+input[type=text], input[type=text] {
+  background-color: #d5d7db;
+}
+input[type=date],input[type=file] {
+  background-color: #d5d7db;
+}
+input[type=" "] {
+  background-color: #d5d7db;
+}
+input[type=number] {
+  background-color: #d5d7db;
+}
+ngx-dropzone {
+  background-color: #d5d7db;
+  height: 35px;
+  width: auto;
+  border: none;
+  border-radius: 10px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.table {
+    background-color: #d5d7db;
+  }
+  .in{
+    position: absolute;
+    color:transparent;
+    border:1px solid gray;
+    z-index:11;
+  }
+  .ico{
+    color: black;
+  }
+  input[type=file]::-webkit-file-upload-button{
+    visibility: hidden;
+    display:none;
+  }
+  //search input start
+  ::ng-deep {
+    .dataTables_wrapper .dataTables_filter {
+      float: right;
+    }
+    //.dataTables_wrapper .dataTables_length {
+    //  display: none;
+    //}
+  }
+  th.sorting.sorting_asc::after{
+    display:none;
+  }
+  th.sorting.sorting_asc::before{
+    display:none;
+  }
+ ::ng-deep input[type=search]{
+  width:250px;
+  margin-bottom: 2rem;
+ }
+  ::ng-deep .dataTables_wrapper .dataTables_filter input[type=search]{
+    border-radius: 15px;
+  }
+  //search input end
+  ::ng-deep .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background-color: #d5d7db;
+  }
+.studentCreationSec {
+  border-radius: 12px;
+}
+.image-size {
+   width: 70%;
+  margin: 0 0 0 18rem;
+}
+.dialogBox{
+  width: 24rem;
+  height: 11rem;
+}
+.ImageSize {
+  width: 60rem;
+  height: 40rem;
+}
+
+

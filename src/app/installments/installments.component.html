@@ -1,0 +1,90 @@
+<div class="row pt-4 m-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <h1 class="text-black"><b>Installments</b></h1>
+  </div>
+</div>
+<div class="studentCreationSec" [nbSpinner]="loading" nbSpinnerStatus="basic" >
+<nb-card>
+  <nb-card-body>
+    <form [formGroup]="myInstallment">
+    <div class="row m-0">
+      <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+        <label class="mb-2">Year<span class="text-danger"><b>*</b></span></label><br>
+        <nb-form-field>
+          <nb-icon nbSuffix icon="arrow-ios-downward-outline" pack="eva"  class="text-black"></nb-icon>
+          <nb-select fullWidth shape="semi-round" placeholder="Select Year" formControlName="selectedYear" (selectedChange)="setYear($event)">
+            <nb-option *ngFor="let year of years" [value]="year">{{ year }}</nb-option>
+          </nb-select>
+        </nb-form-field>
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+        <label class="mb-2">1st Installment</label><br>
+        <input fullWidth type=" " shape="semi-round" formControlName="Installment1" [nbDatepicker]="datepicker1" placeholder="Enter Date" nbInput>
+        <nb-datepicker #datepicker1></nb-datepicker>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+        <label class="mb-2">2nd Installment</label><br>
+        <input fullWidth type=" " shape="semi-round" formControlName="Installment2" [nbDatepicker]="datepicker2" placeholder="Enter Date" nbInput>
+        <nb-datepicker #datepicker2></nb-datepicker>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+        <label class="mb-2">3rd Installment</label><br>
+        <input fullWidth type=" " shape="semi-round" formControlName="Installment3" [nbDatepicker]="datepicker3" placeholder="Enter Date" nbInput>
+        <nb-datepicker #datepicker3></nb-datepicker>
+      </div>
+      </div>
+    <div class="row m-0">
+      <div class="col-lg-4 col-md-4 col-sm-4 mt-4">
+        <button fullWidth shape="round" status="primary" (click)="save()" id="saveButton" nbButton>Save</button>
+      </div>
+    </div>
+    <br>
+    </form>
+  </nb-card-body>
+</nb-card>
+</div>
+<br>
+
+
+<div *ngIf="load">
+  <div *ngIf="Installmentslist.length > 0">
+ <nb-card>
+  <nb-card-body>
+    <div class="table-responsive">
+    <table datatable>
+      <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Year</th>
+        <th>InstallmentOne</th>
+        <th>InstalmentTwo</th>
+        <th>InstallmentThree</th>
+      </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let showData of Installmentslist let i=index">
+           <td>{{i+1}}</td>
+           <td>{{showData.year}}</td>
+           <td>{{showData.installmentOne | date}}</td>
+           <td>{{showData.installmentTwo | date}}</td>
+           <td>{{showData.installmentThree | date}}</td>
+         </tr>
+      </tbody>
+    </table>
+    </div>
+  </nb-card-body>
+</nb-card>
+  </div>
+
+
+  <div *ngIf="Installmentslist.length <= 0">
+    <nb-card>
+      <nb-card-body>
+        <p>No Installment Data Found</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  </div>
+

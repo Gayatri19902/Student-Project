@@ -1,0 +1,39 @@
+nb-card{
+  background-color:#f2f3f5;
+  margin: 0 1rem 0 0;
+  border-radius: 12px;
+}
+input[type=text], input[type=email]{
+  background-color: #d5d7db;
+}
+.textarea{
+  background-color: #d5d7db;
+  height: 2.4rem;
+  border: none;
+  outline: none;
+  resize: none;
+}
+h2{
+  font-size: 45px;
+  margin-left: -1rem;
+}
+.imagesize {
+  height:30%;
+  width: 20%;
+  border-radius: 15px;
+  border: 1px solid white;
+  background-color: #d5d7db;
+}
+input[type=file]::-webkit-file-upload-button{
+  visibility: hidden;
+  display:none;
+}
+input[type=file][_ngcontent-vja-c146] {
+  background-color: #d5d7db;
+}
+::ng-deep {
+  [dir=ltr] .nb-form-field-control-with-suffix [nbInput].size-medium {
+    padding-right: var(--form-field-addon-medium-width);
+    background-color: #d5d7db;
+  }
+}

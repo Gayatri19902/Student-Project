@@ -1,0 +1,42 @@
+<div>
+  <nb-layout>
+    <nb-layout-column>
+      <div class="container" >
+        <div class="row m-0">
+          <div>
+            <form [formGroup]="mylogin">
+              <div class="col-lg-4 col-sm-12 col-md-8">
+                <h1><strong>Hello, Welcome</strong></h1>
+                <p class="p">  <strong> Enter login Id and Password to continue.</strong>
+                </p>
+              </div>
+              <!--          <div [nbSpinner]="loading" nbSpinnerStatus="basic">-->
+              <div class="col-lg-4 col-sm-12 col-md-8">
+                <input type="email" fullWidth placeholder="login" shape="semi-round" formControlName="email"
+                       nbInput [ngClass]="{'is-invalid': submitted && lgf.email.errors}"/>
+                <div *ngIf="submitted && lgf.email.invalid">
+                  <div *ngIf="lgf.email.errors.required" class="text-danger">Email is Required</div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                <nb-form-field>
+                  <input type="{{ showPassword ? 'text' : 'password' }}" fullWidth placeholder="Password" shape="semi-round" formControlName="password" nbInput
+                         [ngClass]="{'is-invalid': submitted && lgf.password.errors}"  />
+                  <nb-icon icon="{{showPassword ? 'eye-outline' : 'eye'}}" nbSuffix  (click)="togglePasswordVisibility()"></nb-icon>
+                  <div *ngIf="submitted && lgf.password.invalid">
+                    <div *ngIf="lgf.password.errors.required" class="text-danger">Password is Required</div>
+                  </div>
+                </nb-form-field>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8">
+                <button nbButton fullWidth status="primary" (click)="login()" shape="round" class="buttondiv">Login</button>
+                <div class="signup"><span class="p">Do not have an Account? <a [routerLink]="['/signUp']"> Sign Up</a></span> <span class="forgot"><a [routerLink]="['/forgotpage']">Forgot password</a></span></div>
+              </div>
+              <!--          </div>-->
+            </form>
+          </div>
+        </div>
+      </div>
+    </nb-layout-column>
+  </nb-layout>
+</div>

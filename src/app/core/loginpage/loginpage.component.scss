@@ -1,0 +1,80 @@
+h1 {
+  color: black;
+  font-size: 48px;
+}
+  .p{
+    color: black;
+    margin-top: 1%;
+  }
+
+.container{
+  margin: 8rem 0 0 28rem;
+  position: fixed;
+}
+input[type="password"]{
+   //margin-top: 4%;
+  text-decoration: none;
+  border: 1px solid lavender;
+  background-color: #e8e9ed;
+}
+input[type="text"]{
+  text-decoration: none;
+  border: 1px solid lavender;
+  background-color: #e8e9ed;
+}
+input[type="email"]{
+  text-decoration: none;
+  background-color: #e8e9ed;
+}
+.forgot{
+  margin-left: 10%;
+  color:#0E32B3;
+  text-decoration: underline;
+}
+p{
+  margin-top: 3%;
+}
+.buttondiv{
+  margin-top: 4%;
+}
+card{
+  background-color: white;
+}
+::ng-deep .nb-layout-column{
+  background-color: white;
+}
+.signup{
+  margin-top: 2%;
+}
+@media (max-width: 340px) {
+   .container {
+     margin: 7rem 0 0 -1rem;
+     position: fixed;
+   }
+}
+@media (min-width: 341px) and (max-width: 500px){
+  .container {
+    margin: 10rem 0 0 -1.5rem;
+    position: fixed;
+  }
+}
+@media (min-width: 501px) and (max-width: 641px) {
+  .container {
+    margin: 10rem 0 0 -1.5rem;
+    position: fixed;
+  }
+}
+@media (min-width: 642px) and (max-width: 768px) {
+  .container {
+    margin: 10rem 0 0 1.5rem;
+    position: fixed;
+  }
+}
+@media (min-width:769px) and (max-width: 991px) {
+   .container {
+     margin: 10rem 0 0 6rem;
+     position: fixed;
+   }
+}
+
+

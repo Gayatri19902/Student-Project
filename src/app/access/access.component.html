@@ -1,0 +1,47 @@
+<div class="row pt-4 m-0">
+  <div class="col-sm-6">
+    <h1 class="text-black"><b>User List</b></h1>
+    </div>
+  </div>
+<div>
+  <div class="studentCreationSec" [nbSpinner]="loading" nbSpinnerStatus="basic" >
+  <div *ngIf="showAccess.length > 0">
+    <nb-card>
+      <nb-card-body>
+        <div class="table-responsive">
+          <table datatable>
+            <thead>
+            <tr>
+              <th>Sl.No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Designations</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let Access of showAccess let i=index">
+              <td>{{i+1}}</td>
+              <td>{{Access.name}}</td>
+              <td>{{Access.email}}</td>
+              <td>{{Access.userType}}</td>
+              <td>{{Access.userType}}</td>
+              <td><nb-icon icon="edit" routerLink="/dashboard/ShowAccess" [queryParams]="{id:Access._id}" ></nb-icon></td>
+                 </tr>
+            </tbody>
+          </table>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div *ngIf="showAccess.length <= 0">
+    <nb-card>
+      <nb-card-body>
+        <p class="text-center">No data Data Found</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+</div>

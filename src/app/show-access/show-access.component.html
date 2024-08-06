@@ -1,0 +1,62 @@
+<div class="row pt-4 m-0">
+  <div class="col-sm-6">
+    <h2 class="text-black">
+      <b><nb-icon icon="arrow-back-outline" routerLink="/dashboard/access" pack="eva"></nb-icon>Admin Access</b></h2>
+  </div>
+<!--  <div [nbSpinner]="loading" nbSpinnerStatus="basic" >-->
+  <nb-card>
+    <nb-card-body>
+      <form [formGroup]="MyAccessForm">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 mt-4">
+            <label class="mb-2">Name:</label>
+            <input type="text" nbInput fullWidth shape="semi-round" formControlName="name"
+                   [ngClass]="{'is-invalid':submitted && Ac.name.errors}" />
+            <div *ngIf="submitted && Ac.name.invalid">
+              <div *ngIf="submitted && Ac.name.errors.required" class="text-danger">Name is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mt-4">
+            <label class="mb-2">Email: </label>
+            <input type="email" nbInput fullWidth shape="semi-round" formControlName="Email"
+                   [ngClass]="{'is-invalid':submitted && Ac.Email.errors}" />
+            <div *ngIf="submitted && Ac.Email.invalid">
+              <div *ngIf="submitted && Ac.Email.errors.required" class="text-danger">Email is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mt-4">
+            <label class="mb-2">Roles: </label>
+            <input type="text" nbInput fullWidth shape="semi-round" formControlName="Role"
+                   [ngClass]="{'is-invalid':submitted && Ac.Role.errors}" />
+            <div *ngIf="submitted && Ac.Role.invalid">
+              <div *ngIf="submitted && Ac.Role.errors.required" class="text-danger">Role is Required</div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 mt-4">
+            <label class="mb-2">Designations: </label>
+            <input type="text" nbInput fullWidth shape="semi-round" formControlName="designation"
+                   [ngClass]="{'is-invalid':submitted && Ac.designation.errors}"  />
+            <div *ngIf="submitted && Ac.designation.invalid">
+              <div *ngIf="submitted && Ac.designation.errors.required" class="text-danger">Designation is Required</div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row mt-2" formArrayName="selectedItems">
+          <div class="col-lg-12 col-md-12 col-sm-12 d-flex gap-2">
+            <label class="mb-2">Give Access: </label>
+            <div *ngFor="let Item of items">
+              <nb-checkbox (change)="onCheckChange($event,Item.name)"  [checked]="Item.isChecked" ></nb-checkbox>
+              {{Item.name}}
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 mt-3">
+            <button shape="round" status="primary" fullWidth nbButton (click)="save()" >Save</button>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+<!--  </div>-->
+</div>

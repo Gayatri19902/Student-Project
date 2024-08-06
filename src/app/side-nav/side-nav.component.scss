@@ -1,0 +1,57 @@
+::ng-deep {
+  .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+    top: 0;
+  }
+  nb-sidebar{
+    box-shadow: none !important;
+  }
+  nb-menu .menu-item{
+    border-bottom:none;
+  }
+  nb-menu .menu-item a{
+    color: lightgrey;
+    margin-left: 3%;
+    padding: 17px;
+    font-size: 14px;
+  }
+  nb-menu .menu-item .menu-icon {
+    color: lightgrey;
+  }
+  .sidenavdiv{
+    background-color: black;
+    color: white;
+    height: 100%;
+    border-radius: 20px;
+    padding:20px !important;
+  }
+  .imageDiv{
+  width:63px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: -10px;
+  margin-right: 20px;
+  border: 1px double white;
+  background-color: #d5d7db;
+  }
+  nb-menu .menu-item a:hover{
+    color: white;
+  }
+  nb-menu .menu-item a.active{
+    color:white;
+  }
+  nb-menu .menu-item a.active .menu-icon{
+    color:white;
+  }
+   nb-menu .menu-item a:hover .menu-icon{
+    color:white;
+  }
+}
+.Name {
+  margin: 1rem 4rem 0 -1.3rem;
+}
+.admin {
+  color:#a8a2a2;
+}
+.role {
+  font-variant: all-petite-caps;
+}

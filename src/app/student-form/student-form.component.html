@@ -1,0 +1,169 @@
+<div class="studentCreationSec" [nbSpinner]="loading" nbSpinnerStatus="basic">
+  <nb-card>
+    <nb-card-header class="p-3">
+      <h2 class="fw-bold text-black">
+        <nb-icon icon="arrow-back" nbTooltip="Go Back To List" class="icon cursor-pointer" (click)="goBack()"></nb-icon>
+        Student Form</h2>
+    </nb-card-header>
+    <nb-card-body class="p-3">
+      <ng-container *ngIf="loadStudentDetailsData">
+        <form [formGroup]="createStudForm">
+          <div class="row m-0">
+            <div class="form-group col-sm-12 col-md-8 col-lg-6 mb-2">
+              <label class="mb-2">Admission Number<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="admissionNumber" [readonly]="studentDisabled" type="number"
+                     [ngClass]="{'is-invalid': submitted && csc.admissionNumber.errors}"/>
+              <div *ngIf="submitted && csc.admissionNumber.invalid" class="invalid-feedback">
+                <div *ngIf="csc.admissionNumber.errors.required">Admission Number Required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-0">
+            <div class="form-group col-sm-12 col-md-8 col-lg-6  mb-2">
+              <label class="mb-2">Name<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="name" type="text"
+                     [ngClass]="{'is-invalid': submitted && csc.name.errors}"/>
+              <div *ngIf="submitted && csc.name.invalid" class="invalid-feedback">
+                <div *ngIf="csc.name.errors.required">Name is Required</div>
+              </div>
+          </div>
+            <div class="form-group col-sm-12 col-md-8 col-lg-6  mb-2">
+              <label class="mb-2">SurName<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="surName" type="text"
+                     [ngClass]="{'is-invalid': submitted && csc.surName.errors}"/>
+              <div *ngIf="submitted && csc.surName.invalid" class="invalid-feedback">
+                <div *ngIf="csc.surName.errors.required">SurName is Required</div>
+              </div>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-8 col-lg-6  mb-2">
+              <label class="mb-2">Father Name<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="fathersName" type="text"
+                     [ngClass]="{'is-invalid': submitted && csc.fathersName.errors}"/>
+              <div *ngIf="submitted && csc.fathersName.invalid" class="invalid-feedback">
+                <div *ngIf="csc.fathersName.errors.required">FathersName is Required</div>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-8 col-lg-6  mb-2">
+              <label class="mb-2">Mobile Number<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="mobileNumber" type="number"
+                     [ngClass]="{'is-invalid': submitted && csc.mobileNumber.errors}"/>
+              <div *ngIf="submitted && csc.mobileNumber.invalid" class="invalid-feedback">
+                <div *ngIf="csc.mobileNumber.errors.required">Mobile Number is Required</div>
+              </div>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-8 col-lg-6  mb-2">
+              <label class="mb-2">Group<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="group" type="text"
+                     [ngClass]="{'is-invalid': submitted && csc.group.errors}"/>
+              <div *ngIf="submitted && csc.group.invalid" class="invalid-feedback">
+                <div *ngIf="csc.group.errors.required">Group is Required</div>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-8 col-lg-6  mb-2">
+              <label class="mb-2">Medium<span class="text-danger"><b>*</b></span></label>
+              <input class="form-control" nbInput fullWidth formControlName="medium" type="text"
+                     [ngClass]="{'is-invalid': submitted && csc.medium.errors}"/>
+              <div *ngIf="submitted && csc.medium.invalid" class="invalid-feedback">
+                <div *ngIf="csc.medium.errors.required">Medium is Required</div>
+              </div>
+            </div>
+            <div class="form-group col-12  mb-4">
+              <label class="mb-2">Address<span class="text-danger"><b>*</b></span></label>
+              <textarea class="form-control" nbInput fullWidth formControlName="address" cols="4" rows="4"
+                        [ngClass]="{'is-invalid': submitted && csc.address.errors}"></textarea>
+              <div *ngIf="submitted && csc.address.invalid" class="invalid-feedback">
+                <div *ngIf="csc.address.errors.required">Address is Required</div>
+              </div>
+            </div>
+            <div class="col-sm-4 form-group text-end mb-2">
+              <button nbButton shape="round" status="primary" (click)="changeDataForStudent()" fullWidth>{{studentBTNName}}</button>
+            </div>
+          </div>
+        </form>
+
+        <div *ngIf="openAdmission" class="mb-2">
+          <form [formGroup]="AdmissionForm">
+            <div class="row">
+              <div class="form-group col-sm-12 col-md-8 col-lg-6">
+                <label class="mb-2">Admission Fee<span class="text-danger"><b>*</b></span></label>
+                <input class="form-control" nbInput formControlName="admissionFee" type="number" fullWidth [readonly]="paidDisabled"
+                       [ngClass]="{'is-invalid': submitted && cac.admissionFee.errors}"/>
+                <div *ngIf="submitted && cac.admissionFee.invalid" class="invalid-feedback">
+                  <div *ngIf="cac.admissionFee.errors.required">Admission Fee is Required</div>
+                </div>
+              </div>
+              <div class="form-group col-sm-12 col-md-8 col-lg-6 mt-auto">
+                <button nbButton status="primary" shape="semi-round"  [disabled]="paidDisabled" (click)="paid()">Paid</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div *ngIf="openCommitmentFee">
+          <form [formGroup]="dataForm">
+            <div class="row">
+              <div class="form-group col-sm-12 col-md-8 col-lg-6">
+                <label class="mb-2">Commitment Fee<span class="text-danger"><b>*</b></span></label>
+                <input fullWidth class="form-control" nbInput formControlName="commitmentFee" [readonly]="commitmentDisabled" type="number" (input)="changeInstallment($event)"
+                       [ngClass]="{'is-invalid': submitted && cac?.commitmentFee?.errors}"/>
+                <div *ngIf="submitted && cac?.commitmentFee?.invalid" class="invalid-feedback">
+                  <div *ngIf="cac?.commitmentFee?.errors?.required">Commitment Fee is Required</div>
+                </div>
+              </div>
+              <div class="form-group col-sm-12 col-md-8 col-lg-6 mt-auto">
+                <div class="d-flex gap-2">
+                  <nb-select placeholder="Select Installments" id="showDividedData"  formControlName="installment" [disabled]="installmentDisabled">
+                    <nb-option value="None"  (click)="onCheckboxChange('None')">None</nb-option>
+                    <nb-option *ngFor="let a of installments" value="{{a.value}}" (click)="onCheckboxChange(a.value)">{{a.Name}}</nb-option>
+                  </nb-select>
+                </div>
+              </div>
+              <div class="col-12 mt-2" *ngIf="showDividedData">
+                <div class="row">
+                  <div class=" col-sm-12 col-md-4 col-lg-4 mb-2">
+                    <label class="mb-2">Instalment 1:</label>
+                    <input class="form-control install1" type="number" nbInput formControlName="installment1" readonly fullWidth />
+                  </div>
+                  <div class="form-group col-sm-12 col-md-8 col-lg-8 mt-4" *ngIf="checkboxFlag">
+                    <div class="d-flex gap-2 cursor-pointer">
+                      <nb-checkbox  formControlName="checkbox1" class="checkbox1" [disabled]="checkboxDisabled" ><span class="form-check-label cursor-pointer">paid</span></nb-checkbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class=" col-sm-12 col-md-4 col-lg-4 mb-2">
+                    <label class="mb-2">Installment 2:</label>
+                    <input class="form-control install2" type="number" nbInput formControlName="installment2" readonly fullWidth />
+                  </div>
+                  <div class="form-group col-sm-12 col-md-8 col-lg-8 mt-4" *ngIf="checkboxFlag">
+                    <div class="d-flex gap-2">
+                      <nb-checkbox formControlName="checkbox2" class="checkbox1" [disabled]="checkeValueFlag"  (change)="checkBox($event)"><span class="form-check-label cursor-pointer" >paid</span></nb-checkbox>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="showInstallment">
+                  <div class=" col-sm-12 col-md-4 col-lg-4 mb-2">
+                    <label class="mb-2">Instalment 3:</label>
+                    <input class="form-control install3" type="number"  nbInput formControlName="installment3" readonly fullWidth />
+                  </div>
+                  <div class="form-group col-sm-12 col-md-8 col-lg-8 mt-4" *ngIf="checkboxFlag">
+                    <div class="d-flex gap-2">
+                      <nb-checkbox formControlName="checkbox3" class="checkbox1" [checked]="checkeValueFlag1" (change)="checkBox1($event)"><span class="form-check-label cursor-pointer">paid</span></nb-checkbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <button class="mt-3" fullWidth shape="round" nbButton status="primary" [disabled] = "commitmentDisabled " (click)="createInstallment()">Confirm</button>
+            </div>
+          </form>
+        </div>
+      </ng-container>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+

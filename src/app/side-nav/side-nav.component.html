@@ -1,0 +1,15 @@
+<div class="sidenavdiv">
+  <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center m-3">
+      <img  [src]="profile" class="imageDiv" (click)="toggle()" alt="logo">
+    </div>
+    <div class="Name">
+      <h6 class="m-auto role"><b>{{name}}</b></h6>
+      <p class="admin"><b>{{designation}}</b></p>
+    </div>
+  </div>
+  <nb-menu [items]="items"></nb-menu>
+</div>
+
+
+

@@ -1,0 +1,95 @@
+<div >
+  <nb-layout>
+    <nb-layout-column>
+      <div class="container" >
+        <div class="row m-0">
+
+            <form [formGroup]="signinForm">
+              <div class="col-lg-4 col-sm-8 col-md-12">
+                <h1><strong>Hello, Welcome</strong></h1>
+                <h4 class="p"><strong>Please Sign Up</strong>
+                </h4>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8">
+                <input type="text" fullWidth placeholder="Name" shape="semi-round" formControlName="name" nbInput
+                       [ngClass]="{'is-invalid': submit && sgf.name.errors}" [readonly]="ReadOnly" />
+                <div *ngIf="submit && sgf.name.invalid">
+                  <div *ngIf="sgf.name.errors.required" class="text-danger">Name is Required</div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                <input type="email" fullWidth placeholder="email" shape="semi-round" formControlName="email" nbInput
+                       [ngClass]="{'is-invalid': submit && sgf.email.errors}" [readonly]="ReadOnly" />
+                <div *ngIf="submit && sgf.email.invalid">
+                  <div *ngIf="sgf.email.errors.required" class="text-danger">Email is Required</div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                <input type="text" fullWidth placeholder="Designations" shape="semi-round" formControlName="designation" nbInput
+                       [ngClass]="{'is-invalid': submit && sgf.designation.errors}" [readonly]="ReadOnly" />
+                <div *ngIf="submit && sgf.designation.invalid">
+                  <div *ngIf="sgf.designation.errors.required" class="text-danger">Designation is Required</div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                <nb-form-field>
+                  <nb-select placeholder="Role" shape="semi-round" fullWidth formControlName="role" readonly="ReadOnly" >
+                    <input type="text" fullWidth placeholder="Role"  nbInput
+                           [ngClass]="{'is-invalid': submit && sgf.role.errors}" />
+                    <nb-option value="USER">User</nb-option>
+                    <nb-option value="ADMIN">Admin</nb-option>
+                    <div *ngIf="submit && sgf.role.invalid">
+                      <div *ngIf="sgf.role.errors.required" class="text-danger">Role is Required</div>
+                    </div>
+                  </nb-select>
+                </nb-form-field>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                <nb-form-field>
+                  <input type="{{ showPassword ? 'text' : 'password' }}" fullWidth placeholder="Password" shape="semi-round" formControlName="password" nbInput
+                         [ngClass]="{'is-invalid': submit && sgf.password.errors}" [readonly]="ReadOnly" />
+                  <nb-icon icon="{{showPassword ? 'eye-outline' : 'eye'}}" nbSuffix  (click)="togglePasswordVisibility()"></nb-icon>
+                  <div *ngIf="submit && sgf.password.invalid">
+                    <div *ngIf="sgf.password.errors.required" class="text-danger">Password is Required</div>
+                  </div>
+                </nb-form-field>
+              </div>
+              <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                <button nbButton fullWidth status="primary" [hidden]="buttonHide" (click)="signUp()" shape="round" class="buttondiv">Submit</button>
+                <div [hidden]="beforeSubmit" class="signIn"><p>Do you have already an Account?<span class="forgot"><a [routerLink]="['/loginpage']">Signin</a></span></p></div>
+              </div>
+              <div *ngIf="loadbill">
+                  <div class="col-lg-4 col-sm-12 col-md-8 mt-3">
+                    <label for="file-input">
+                      <div class="uploadImg">
+                      <nb-form-field>
+                        <nb-icon nbSuffix icon="upload-outline"pack="eva" class="ico" ></nb-icon>
+                        <input type="file" id="file-input" fullWidth shape="semi-round" placeholder="Upload Profile"
+                               formControlName="profile" #fileInput (change)="onselectFile($event)" nbInput>
+                      </nb-form-field>
+                      </div>
+                    </label>
+                    <div *ngIf="submit">
+                      <div class="text-danger" *ngIf="signinForm.controls.profile.errors?.required">profile is required
+                      </div>
+                      <div class="text-danger" *ngIf="!submit && signinForm.controls.profile.touched && signinForm.controls.profile.errors?.required">
+                        file is required</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-8 col-sm-12  mt-3">
+                    <button nbButton fullWidth shape="round" status="primary" (click)="save()" >SignIn</button>
+
+                     <div [hidden]="afterSubmit" class="signIn">
+                       <p>Do you have already an Account?<span class="forgot">
+                       <a [routerLink]="['/loginpage']">Signin</a></span></p>
+                  </div>
+                  </div>
+                </div>
+            </form>
+
+        </div>
+      </div>
+    </nb-layout-column>
+  </nb-layout>
+</div>
+
